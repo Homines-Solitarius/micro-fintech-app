@@ -421,7 +421,7 @@ class ProfilePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 tabs: [
                   Tab(
-                    text: "Badges",
+                    text: "Shop",
                   ),
                   Tab(
                     text: "Transactions",
