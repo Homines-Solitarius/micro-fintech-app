@@ -248,11 +248,14 @@ class ProfilePage extends StatelessWidget {
                           child: SlideButton(
                             text: "Add Money",
                             ontap: () {
+                              final height = MediaQuery.of(context).size.height;
+
                               showModalBottomSheet(
                                   showDragHandle: true,
                                   backgroundColor: AppColors.white,
                                   context: context,
                                   builder: (context) => Container(
+                                        height: height * .45,
                                         width: double.infinity,
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 20.0),

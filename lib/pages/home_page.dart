@@ -4,7 +4,6 @@ import 'package:wallet_ui/components/my_card.dart';
 import 'package:wallet_ui/components/slide_button.dart';
 import 'package:wallet_ui/utils/app_colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import 'package:wallet_ui/models/user_model.dart';
 
 import '../components/my_transparent_button.dart';
@@ -46,6 +45,9 @@ class HomePage extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
+        //
+
+        //
         SizedBox(
             height: mySize.height * .05,
             child: ListView(

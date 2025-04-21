@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_ui/pages/chat_room.dart';
 import 'package:wallet_ui/utils/app_colors.dart';
+
+import '../components/custom_app_bar.dart';
 
 class ChatsPage extends StatelessWidget {
   const ChatsPage({super.key});
@@ -9,7 +12,10 @@ class ChatsPage extends StatelessWidget {
     return Column(
       children: [
         // Appbar
-        _customAppBar(),
+        CustomAppBar(
+          title: "Chats",
+          actionIcon: Icons.more_vert_rounded,
+        ),
         SizedBox(
           height: 20,
         ),
@@ -22,35 +28,20 @@ class ChatsPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 10),
             shrinkWrap: true,
             itemCount: 20,
-            itemBuilder: (context, index) => _profileTile(index),
+            itemBuilder: (context, index) => GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatRoom(
+                          name: "John Osayemi",
+                        ),
+                      ));
+                },
+                child: _profileTile(index)),
           ),
         )
       ],
-    );
-  }
-
-// Appbar
-  Widget _customAppBar() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Chats",
-            style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: AppColors.black),
-          ),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.more_vert_rounded,
-                size: 22,
-              ))
-        ],
-      ),
     );
   }
 
@@ -58,14 +49,19 @@ class ChatsPage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-          color: AppColors.background,
+          color: AppColors.background.withValues(alpha: .2),
           border: Border.all(
-              width: 2, color: AppColors.black, style: BorderStyle.solid),
+              width: 2,
+              color: AppColors.accentPurple,
+              style: BorderStyle.solid),
           borderRadius: BorderRadius.circular(40)),
       child: SearchBar(
         backgroundColor: WidgetStatePropertyAll(Colors.transparent),
         elevation: WidgetStatePropertyAll(0),
-        leading: Icon(Icons.search),
+        leading: Icon(
+          Icons.search,
+          color: AppColors.accentPurple,
+        ),
         hintText: "Add a friend or Search",
       ),
     );
